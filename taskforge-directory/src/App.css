@@ -67,6 +67,41 @@ input {
   cursor: pointer;
 }
 
+
+.project-details {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #73000a;
+  border-radius: 4px;
+}
+
+.project-details h3 {
+  margin-top: 0;
+  color: #73000a;
+}
+
+.details-button {
+  margin-top: 15px;
+  padding: 10px 16px;
+  background-color: #73000a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.details-button:hover {
+  background-color: #570008;
+}
+
+.details-button:focus-visible {
+  outline: 3px solid #b85c66;
+  outline-offset: 3px;
+}
+
 /* Default code kept for future reference */
 
 /* .counter {
