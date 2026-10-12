@@ -1,15 +1,44 @@
 // Main interface, contains elements similar to HTML
 
-import { useState } from "react"
+import { useState, useEffect } from "react";
 import { initialProjects } from "./data/projects";
 import ProjectCard from "./components/ProjectCard";
 import AddProjectForm from "./components/AddProjectForm";
 import "./App.css";
 
-function App() {
-  const [projects, setProjects] = useState(initialProjects);
+function App() { 
+  const [projects, setProjects] = useState(() => {
+    try {
+      const savedProjects = localStorage.getItem("taskforge-projects");
+
+      if (savedProjects !== null) {
+        const parsedProjects = JSON.parse(savedProjects);
+
+        if (Array.isArray(parsedProjects)) {
+          return parsedProjects;
+        }
+      }
+    } catch (error) {
+      console.error("Could not load saved projects:", error);
+    }
+
+    return initialProjects;
+  });
+
   const [search, setSearch] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("All");
+  
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        "taskforge-projects",
+        JSON.stringify(projects)
+      );
+    } catch (error) {
+      console.error("Could not save projects:", error);
+    }
+  }, [projects]);
+
   const departments = ["All",
     ...new Set(projects.map((project) => project.department))
   ];
