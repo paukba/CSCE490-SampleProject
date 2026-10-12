@@ -12,18 +12,46 @@ import ProjectCard from "./components/ProjectCard";
 import "./App.css";
 
 function App() {
+  const [search, setSearch] = useState("");
+
+  const filteredProjects = initialProjects.filter((project) => {
+    const searchTerm = search.toLowerCase().trim();
+    return (
+      project.title
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      project.department
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      project.researcher
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+      project.description
+        .toLowerCase()
+        .includes(searchTerm)
+    );
+  });
+  
   return (
     <div className="app">
       <header>
         <h1>TaskForge Research Directory</h1>
-        <p>Explore university research projects</p>
+        <p>Explore university research projects.</p>
       </header>
 
       <main>
         <h2>Research Projects</h2>
+      <input
+        type="text"
+        placeholder="Search research projects..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
+      <p>{filteredProjects.length} projects found</p>
 
         <div className="project-list">
-          {initialProjects.map((project) => (
+          {filteredProjects.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
@@ -36,6 +64,9 @@ function App() {
 }
 
 export default App;
+
+
+/* Default code kept for future reference */
 
 // function App() {
 //   const [count, setCount] = useState(0)

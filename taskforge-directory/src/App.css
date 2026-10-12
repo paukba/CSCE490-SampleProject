@@ -38,6 +38,17 @@ header h1 {
   color: #73000a;
 }
 
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Default code kept for future reference */
+
 /* .counter {
   font-size: 16px;
   padding: 5px 10px;
