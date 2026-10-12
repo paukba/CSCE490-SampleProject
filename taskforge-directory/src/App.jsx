@@ -64,6 +64,24 @@ function App() {
     setSearch("");
     setSelectedDepartment("All");
   }
+
+  function handleDeleteProject(projectId) {
+    setProjects((currentProjects) =>
+      currentProjects.filter(
+        (project) => project.id !== projectId
+      )
+    );
+  }
+
+  function handleEditProject(updatedProject) {
+    setProjects((currentProjects) =>
+      currentProjects.map((project) =>
+        project.id === updatedProject.id
+          ? updatedProject
+          : project
+      )
+    );
+  }
   
   return (
     <div className="app">
@@ -110,6 +128,8 @@ function App() {
             <ProjectCard
               key={project.id}
               project={project}
+              onDeleteProject={handleDeleteProject}
+              onEditProject={handleEditProject}
             />
           ))}
         </div>

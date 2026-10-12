@@ -82,19 +82,12 @@ input {
 }
 
 .details-button {
-  margin-top: 15px;
-  padding: 10px 16px;
-  background-color: #73000a;
+  background-color: #495057;
   color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
 }
 
 .details-button:hover {
-  background-color: #570008;
+  background-color: #343a40;
 }
 
 .details-button:focus-visible {
@@ -158,6 +151,95 @@ input {
 }
 
 .add-project-button:focus-visible {
+  outline: 3px solid #b85c66;
+  outline-offset: 3px;
+}
+
+
+.edit-project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-project-form h3 {
+  color: #73000a;
+  margin-top: 0;
+}
+
+.edit-project-form label {
+  font-weight: bold;
+}
+
+.edit-project-form input,
+.edit-project-form textarea,
+.edit-project-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #222;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.edit-project-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.project-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+  align-items: stretch;
+}
+
+.project-actions button {
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  padding: 8px 4px;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.edit-button,
+.save-button {
+  background-color: #73000a;
+  color: white;
+}
+
+.edit-button:hover,
+.save-button:hover {
+  background-color: #570008;
+}
+
+.delete-button {
+  background-color: #b42318;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #8f1c13;
+}
+
+.cancel-button {
+  background-color: #e5e5e5;
+  color: #222;
+}
+
+.cancel-button:hover {
+  background-color: #d1d1d1;
+}
+
+.project-actions button:focus-visible {
   outline: 3px solid #b85c66;
   outline-offset: 3px;
 }
