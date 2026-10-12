@@ -24,5 +24,29 @@ export const initialProjects = [
     department: "Computer Science",
     description:
       "Researching methods for protecting sensitive information."
+  },
+  {
+    id: 4,
+    title: "Sustainable Energy Solutions",
+    researcher: "Dr. Michael Thompson",
+    department: "Engineering",
+    description:
+      "Developing innovative approaches for renewable energy generation."
+  },
+  {
+    id: 5,
+    title: "Quantum Computing Applications",
+    researcher: "Dr. Lisa Rodriguez",
+    department: "Physics",
+    description:
+      "Investigating potential applications of quantum computing in complex problem-solving."
+  },
+  {
+    id: 6,
+    title: "Biomedical Engineering Innovations",
+    researcher: "Dr. Robert Johnson",
+    department: "Engineering",
+    description:
+      "Developing new technologies for medical applications."
   }
 ];

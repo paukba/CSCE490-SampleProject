@@ -1,9 +1,6 @@
 // Main interface, contains elements similar to HTML
 
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 
 
@@ -13,23 +10,25 @@ import "./App.css";
 
 function App() {
   const [search, setSearch] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState("All");
+  const departments = ["All",
+    ...new Set(initialProjects.map((project) => project.department))
+  ];
 
   const filteredProjects = initialProjects.filter((project) => {
     const searchTerm = search.toLowerCase().trim();
-    return (
-      project.title
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      project.department
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      project.researcher
-        .toLowerCase()
-        .includes(search.toLowerCase()) ||
-      project.description
-        .toLowerCase()
-        .includes(searchTerm)
-    );
+
+    const matchesSearch =
+      project.title.toLowerCase().includes(searchTerm) ||
+      project.department.toLowerCase().includes(searchTerm) ||
+      project.researcher.toLowerCase().includes(searchTerm) ||
+      project.description.toLowerCase().includes(searchTerm);
+
+    const matchesDepartment =
+      selectedDepartment === "All" ||
+      project.department === selectedDepartment;
+
+    return matchesSearch && matchesDepartment;
   });
   
   return (
@@ -47,6 +46,28 @@ function App() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+
+      <div className="filter-container">
+        <label htmlFor="department-filter">
+          Filter by Department:
+        </label>
+
+        <select
+          id="department-filter"
+          value={selectedDepartment}
+          onChange={(event) =>
+            setSelectedDepartment(event.target.value)
+          }
+        >
+          {departments.map((department) => (
+            <option key={department} value={department}>
+              {department === "All"
+                ? "All Departments"
+                : department}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <p>{filteredProjects.length} projects found</p>
 
